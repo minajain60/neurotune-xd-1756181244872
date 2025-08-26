@@ -55,6 +55,56 @@ sap.ui.define([
       var oReleaseStrategyModel = new JSONModel();
       oReleaseStrategyModel.loadData("model/mockData/poReleaseStrategy.json");
       this.getView().setModel(oReleaseStrategyModel, "poReleaseStrategy");
+
+       // Load mock data for Services tab
+      var oServicesModel = new JSONModel();
+      oServicesModel.loadData("model/mockData/poServices.json");
+      this.getView().setModel(oServicesModel, "poServices");
+
+      // Load mock data for Limits tab
+      var oLimitsModel = new JSONModel();
+      oLimitsModel.loadData("model/mockData/poLimits.json");
+      this.getView().setModel(oLimitsModel, "poLimits");
+
+      // Load mock data for Material Data tab
+      var oMaterialDataModel = new JSONModel();
+      oMaterialDataModel.loadData("model/mockData/poMaterialData.json");
+      this.getView().setModel(oMaterialDataModel, "poMaterialData");
+
+      // Load mock data for Quantities/Weights tab
+      var oQuantitiesWeightsModel = new JSONModel();
+      oQuantitiesWeightsModel.loadData("model/mockData/poQuantitiesWeights.json");
+      this.getView().setModel(oQuantitiesWeightsModel, "poQuantitiesWeights");
+
+      // Load mock data for Delivery Schedule tab
+      var oDeliveryScheduleModel = new JSONModel();
+      oDeliveryScheduleModel.loadData("model/mockData/poDeliverySchedule.json");
+      this.getView().setModel(oDeliveryScheduleModel, "poDeliverySchedule");
+
+      // Load mock data for Delivery tab
+      var oDeliveryModel = new JSONModel();
+      oDeliveryModel.loadData("model/mockData/poDelivery.json");
+      this.getView().setModel(oDeliveryModel, "poDelivery");
+
+      // Load mock data for Invoice tab
+      var oInvoiceModel = new JSONModel();
+      oInvoiceModel.loadData("model/mockData/poInvoice.json");
+      this.getView().setModel(oInvoiceModel, "poInvoice");
+
+      // Load mock data for Conditions tab
+      var oConditionsModel = new JSONModel();
+      oConditionsModel.loadData("model/mockData/poConditions.json");
+      this.getView().setModel(oConditionsModel, "poConditions");
+
+       // Load mock data for Account Assignment tab
+      var oAccountAssignmentModel = new JSONModel();
+      oAccountAssignmentModel.loadData("model/mockData/poAccountAssignment.json");
+      this.getView().setModel(oAccountAssignmentModel, "poAccountAssignment");
+
+      // Load mock data for Purchase Ord. History tab
+      var oPurchaseOrdHistoryModel = new JSONModel();
+      oPurchaseOrdHistoryModel.loadData("model/mockData/poPurchaseOrdHistory.json");
+      this.getView().setModel(oPurchaseOrdHistoryModel, "poPurchaseOrdHistory");
     },
 
     // Event handler for Print Preview button

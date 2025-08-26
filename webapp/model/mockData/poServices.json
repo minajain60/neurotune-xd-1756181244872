@@ -1,0 +1,12 @@
+{
+  "services": [
+    {
+      "serviceType": "Labor",
+      "serviceDescription": "General labor services"
+    },
+    {
+      "serviceType": "Consulting",
+      "serviceDescription": "Expert consulting services"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "conditions": [
+    {
+      "conditionType": "Discount",
+      "conditionValue": "10%"
+    },
+    {
+      "conditionType": "Shipping Cost",
+      "conditionValue": "50.00"
+    }
+  ]
+}

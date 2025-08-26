@@ -1,0 +1,12 @@
+{
+  "assignments": [
+    {
+      "glAccount": "100000",
+      "costCenter": "CC001"
+    },
+    {
+      "glAccount": "200000",
+      "costCenter": "CC002"
+    }
+  ]
+}

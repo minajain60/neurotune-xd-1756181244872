@@ -401,14 +401,206 @@
                       select="onSelectItemTab"
                       class="sapUiResponsiveContentPadding">
             <items>
-              <IconTabFilter id="servicesTab" text="Services"/>
-              <IconTabFilter id="limitsTab" text="Limits"/>
-              <IconTabFilter id="materialDataTab" text="Material Data"/>
-              <IconTabFilter id="quantitiesWeightsTab" text="Quantities/Weights"/>
-              <IconTabFilter id="deliveryScheduleTab" text="Delivery Schedule"/>
-              <IconTabFilter id="deliveryTab" text="Delivery"/>
-              <IconTabFilter id="invoiceTab" text="Invoice"/>
-              <IconTabFilter id="conditionsItemTab" text="Conditions"/>
+              <!-- Services Tab -->
+              <IconTabFilter id="servicesTab" text="Services">
+                <content>
+                  <Table id="servicesTable" items="{poServices>/services}" width="100%">
+                    <headerToolbar>
+                      <Toolbar>
+                        <Title text="Services"/>
+                      </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                      <Column><Text text="Service Type"/></Column>
+                      <Column><Text text="Service Description"/></Column>
+                    </columns>
+                    <items>
+                      <ColumnListItem>
+                        <cells>
+                          <Text text="{poServices>serviceType}"/>
+                          <Text text="{poServices>serviceDescription}"/>
+                        </cells>
+                      </ColumnListItem>
+                    </items>
+                  </Table>
+                </content>
+              </IconTabFilter>
+
+              <!-- Limits Tab -->
+              <IconTabFilter id="limitsTab" text="Limits">
+                <content>
+                  <form:SimpleForm id="limitsForm"
+                                   editable="false"
+                                   layout="ResponsiveGridLayout"
+                                   title="Limits Details"
+                                   adjustLabelSpan="false"
+                                   columnsL="2"
+                                   columnsM="2"
+                                   emptySpanL="0"
+                                   emptySpanM="0"
+                                   labelSpanL="4"
+                                   labelSpanM="4">
+                    <form:content>
+                      <Label text="Overall Limit"/>
+                      <Text text="{poLimits>/overallLimit}"/>
+
+                      <Label text="Expected Value"/>
+                      <Text text="{poLimits>/expectedValue}"/>
+                    </form:content>
+                  </form:SimpleForm>
+                </content>
+              </IconTabFilter>
+
+              <!-- Material Data Tab -->
+              <IconTabFilter id="materialDataTab" text="Material Data">
+                <content>
+                  <form:SimpleForm id="materialDataForm"
+                                   editable="false"
+                                   layout="ResponsiveGridLayout"
+                                   title="Material Data"
+                                   adjustLabelSpan="false"
+                                   columnsL="2"
+                                   columnsM="2"
+                                   emptySpanL="0"
+                                   emptySpanM="0"
+                                   labelSpanL="4"
+                                   labelSpanM="4">
+                    <form:content>
+                      <Label text="Material Group"/>
+                      <Text text="{poMaterialData>/materialGroup}"/>
+
+                      <Label text="Manufacturer"/>
+                      <Text text="{poMaterialData>/manufacturer}"/>
+                    </form:content>
+                  </form:SimpleForm>
+                </content>
+              </IconTabFilter>
+
+              <!-- Quantities/Weights Tab -->
+              <IconTabFilter id="quantitiesWeightsTab" text="Quantities/Weights">
+                <content>
+                  <form:SimpleForm id="quantitiesWeightsForm"
+                                   editable="false"
+                                   layout="ResponsiveGridLayout"
+                                   title="Quantities/Weights"
+                                   adjustLabelSpan="false"
+                                   columnsL="2"
+                                   columnsM="2"
+                                   emptySpanL="0"
+                                   emptySpanM="0"
+                                   labelSpanL="4"
+                                   labelSpanM="4">
+                    <form:content>
+                      <Label text="Quantity"/>
+                      <Text text="{poQuantitiesWeights>/quantity}"/>
+
+                      <Label text="Weight"/>
+                      <Text text="{poQuantitiesWeights>/weight}"/>
+                    </form:content>
+                  </form:SimpleForm>
+                </content>
+              </IconTabFilter>
+
+              <!-- Delivery Schedule Tab -->
+              <IconTabFilter id="deliveryScheduleTab" text="Delivery Schedule">
+                <content>
+                  <Table id="deliveryScheduleTable" items="{poDeliverySchedule>/schedule}" width="100%">
+                    <headerToolbar>
+                      <Toolbar>
+                        <Title text="Delivery Schedule"/>
+                      </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                      <Column><Text text="Delivery Date"/></Column>
+                      <Column><Text text="Quantity"/></Column>
+                    </columns>
+                    <items>
+                      <ColumnListItem>
+                        <cells>
+                          <Text text="{poDeliverySchedule>deliveryDate}"/>
+                          <Text text="{poDeliverySchedule>quantity}"/>
+                        </cells>
+                      </ColumnListItem>
+                    </items>
+                  </Table>
+                </content>
+              </IconTabFilter>
+
+              <!-- Delivery Tab -->
+              <IconTabFilter id="deliveryTab" text="Delivery">
+                <form:SimpleForm id="deliveryForm"
+                                 editable="false"
+                                 layout="ResponsiveGridLayout"
+                                 title="Delivery Details"
+                                 adjustLabelSpan="false"
+                                 columnsL="2"
+                                 columnsM="2"
+                                 emptySpanL="0"
+                                 emptySpanM="0"
+                                 labelSpanL="4"
+                                 labelSpanM="4">
+                  <form:content>
+                    <Label text="Shipping Point"/>
+                    <Text text="{poDelivery>/shippingPoint}"/>
+
+                    <Label text="Transportation Planning Date"/>
+                    <Text text="{poDelivery>/transportationPlanningDate}"/>
+                  </form:content>
+                </form:SimpleForm>
+
+              </IconTabFilter>
+
+              <!-- Invoice Tab -->
+              <IconTabFilter id="invoiceTab" text="Invoice">
+                <content>
+                  <form:SimpleForm id="invoiceForm"
+                                   editable="false"
+                                   layout="ResponsiveGridLayout"
+                                   title="Invoice Details"
+                                   adjustLabelSpan="false"
+                                   columnsL="2"
+                                   columnsM="2"
+                                   emptySpanL="0"
+                                   emptySpanM="0"
+                                   labelSpanL="4"
+                                   labelSpanM="4">
+                    <form:content>
+                      <Label text="Invoice Number"/>
+                      <Text text="{poInvoice>/invoiceNumber}"/>
+
+                      <Label text="Invoice Date"/>
+                      <Text text="{poInvoice>/invoiceDate}"/>
+                    </form:content>
+                  </form:SimpleForm>
+                </content>
+              </IconTabFilter>
+
+              <!-- Conditions Tab -->
+              <IconTabFilter id="conditionsItemTab" text="Conditions">
+                <content>
+                  <Table id="conditionsTable" items="{poConditions>/conditions}" width="100%">
+                    <headerToolbar>
+                      <Toolbar>
+                        <Title text="Conditions"/>
+                      </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                      <Column><Text text="Condition Type"/></Column>
+                      <Column><Text text="Condition Value"/></Column>
+                    </columns>
+                    <items>
+                      <ColumnListItem>
+                        <cells>
+                          <Text text="{poConditions>conditionType}"/>
+                          <Text text="{poConditions>conditionValue}"/>
+                        </cells>
+                      </ColumnListItem>
+                    </items>
+                  </Table>
+                </content>
+              </IconTabFilter>
+
+              <!-- India Tab -->
               <IconTabFilter id="indiaTab" text="India">
                 <content>
                   <form:SimpleForm id="indiaTabForm"
@@ -424,13 +616,61 @@
                                    labelSpanM="3">
                     <form:content>
                       <Label text="Control Code"/>
-                      <Input value="" valueState="Warning" width="10em"/>
+                      <Input value="{/controlCode}" valueState="Warning" width="10em"/>
                     </form:content>
                   </form:SimpleForm>
                 </content>
               </IconTabFilter>
-              <IconTabFilter id="accountAssignmentTab" text="Account Assignment"/>
-              <IconTabFilter id="purchaseOrdHistoryTab" text="Purchase Ord. History"/>
+
+              <!-- Account Assignment Tab -->
+              <IconTabFilter id="accountAssignmentTab" text="Account Assignment">
+                <content>
+                  <Table id="accountAssignmentTable" items="{poAccountAssignment>/assignments}" width="100%">
+                    <headerToolbar>
+                      <Toolbar>
+                        <Title text="Account Assignments"/>
+                      </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                      <Column><Text text="GL Account"/></Column>
+                      <Column><Text text="Cost Center"/></Column>
+                    </columns>
+                    <items>
+                      <ColumnListItem>
+                        <cells>
+                          <Text text="{poAccountAssignment>glAccount}"/>
+                          <Text text="{poAccountAssignment>costCenter}"/>
+                        </cells>
+                      </ColumnListItem>
+                    </items>
+                  </Table>
+                </content>
+              </IconTabFilter>
+
+              <!-- Purchase Ord. History Tab -->
+              <IconTabFilter id="purchaseOrdHistoryTab" text="Purchase Ord. History">
+                <content>
+                  <Table id="purchaseOrdHistoryTable" items="{poPurchaseOrdHistory>/history}" width="100%">
+                    <headerToolbar>
+                      <Toolbar>
+                        <Title text="Purchase Order History"/>
+                      </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                      <Column><Text text="Document Number"/></Column>
+                      <Column><Text text="Posting Date"/></Column>
+                    </columns>
+                    <items>
+                      <ColumnListItem>
+                        <cells>
+                          <Text text="{poPurchaseOrdHistory>documentNumber}"/>
+                          <Text text="{poPurchaseOrdHistory>postingDate}"/>
+                        </cells>
+                      </ColumnListItem>
+                    </items>
+                  </Table>
+                </content>
+              </IconTabFilter>
             </items>
           </IconTabBar>
         </layout:VerticalLayout>

@@ -1,0 +1,12 @@
+{
+  "schedule": [
+    {
+      "deliveryDate": "2024-01-20",
+      "quantity": "5 EA"
+    },
+    {
+      "deliveryDate": "2024-01-27",
+      "quantity": "5 EA"
+    }
+  ]
+}
