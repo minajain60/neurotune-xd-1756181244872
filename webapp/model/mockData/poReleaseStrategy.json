@@ -1,0 +1,12 @@
+{
+  "strategies": [
+    {
+      "releaseCode": "R1",
+      "releaseGroup": "Group A"
+    },
+    {
+      "releaseCode": "R2",
+      "releaseGroup": "Group B"
+    }
+  ]
+}

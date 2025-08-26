@@ -1,0 +1,12 @@
+{
+  "texts": [
+    {
+      "textType": "Header Text",
+      "textContent": "This is a header text for the purchase order."
+    },
+    {
+      "textType": "Item Text",
+      "textContent": "This is an item text for the purchase order."
+    }
+  ]
+}

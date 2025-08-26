@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (Controller, JSONModel) {
   "use strict";
 
-  return Controller.extend("converted.purchaseorderview.controller.PurchaseOrderView", {
+  return Controller.extend("converted.purchaseorderview.controller.PurchaseOrder", {
     onInit: function () {
       // Load mock data for PO header
       var oHeaderModel = new JSONModel();
@@ -26,35 +26,35 @@ sap.ui.define([
       oAddressModel.loadData("model/mockData/poAddress.json");
       this.getView().setModel(oAddressModel, "poAddress");
 
-      // Load mock data for Communication tab
-      var oCommunicationModel = new JSONModel();
-      oCommunicationModel.loadData("model/mockData/poCommunication.json");
-      this.getView().setModel(oCommunicationModel, "poCommunication");
+        // Load mock data for Communication tab
+        var oCommunicationModel = new JSONModel();
+        oCommunicationModel.loadData("model/mockData/poCommunication.json");
+        this.getView().setModel(oCommunicationModel, "poCommunication");
 
-      // Load mock data for Partners tab
-      var oPartnersModel = new JSONModel();
-      oPartnersModel.loadData("model/mockData/poPartners.json");
-      this.getView().setModel(oPartnersModel, "poPartners");
+        // Load mock data for Partners tab
+        var oPartnersModel = new JSONModel();
+        oPartnersModel.loadData("model/mockData/poPartners.json");
+        this.getView().setModel(oPartnersModel, "poPartners");
 
-      // Load mock data for Additional Data tab
-      var oAdditionalDataModel = new JSONModel();
-      oAdditionalDataModel.loadData("model/mockData/poAdditionalData.json");
-      this.getView().setModel(oAdditionalDataModel, "poAdditionalData");
+        // Load mock data for Additional Data tab
+        var oAdditionalDataModel = new JSONModel();
+        oAdditionalDataModel.loadData("model/mockData/poAdditionalData.json");
+        this.getView().setModel(oAdditionalDataModel, "poAdditionalData");
 
-      // Load mock data for Org Data tab
-      var oOrgDataModel = new JSONModel();
-      oOrgDataModel.loadData("model/mockData/poOrgData.json");
-      this.getView().setModel(oOrgDataModel, "poOrgData");
+        // Load mock data for Org. Data tab
+        var oOrgDataModel = new JSONModel();
+        oOrgDataModel.loadData("model/mockData/poOrgData.json");
+        this.getView().setModel(oOrgDataModel, "poOrgData");
 
-      // Load mock data for Status tab
-      var oStatusModel = new JSONModel();
-      oStatusModel.loadData("model/mockData/poStatus.json");
-      this.getView().setModel(oStatusModel, "poStatus");
+        // Load mock data for Status tab
+        var oStatusModel = new JSONModel();
+        oStatusModel.loadData("model/mockData/poStatus.json");
+        this.getView().setModel(oStatusModel, "poStatus");
 
-      // Load mock data for Release Strategy tab
-      var oReleaseStrategyModel = new JSONModel();
-      oReleaseStrategyModel.loadData("model/mockData/poReleaseStrategy.json");
-      this.getView().setModel(oReleaseStrategyModel, "poReleaseStrategy");
+        // Load mock data for Release Strategy tab
+        var oReleaseStrategyModel = new JSONModel();
+        oReleaseStrategyModel.loadData("model/mockData/poReleaseStrategy.json");
+        this.getView().setModel(oReleaseStrategyModel, "poReleaseStrategy");
     },
 
     // Event handler for Print Preview button
@@ -85,7 +85,7 @@ sap.ui.define([
       // Handle tab selection here
       console.log("Selected item tab: " + sKey);
     },
-        // Event handler for Default Values button
+    // Event handler for Default Values button
     onPressDefaultValues: function () {
       alert("Default Values functionality");
     },

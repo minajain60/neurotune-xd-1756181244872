@@ -131,7 +131,6 @@
                 </form:SimpleForm>
               </content>
             </IconTabFilter>
-
             <IconTabFilter id="textsTab" text="Texts">
               <content>
                 <Table id="textsTable" items="{poTexts>/texts}" width="100%">
@@ -155,7 +154,6 @@
                 </Table>
               </content>
             </IconTabFilter>
-
             <IconTabFilter id="addressTab" text="Address">
               <content>
                 <form:SimpleForm id="addressForm"
@@ -188,7 +186,6 @@
                 </form:SimpleForm>
               </content>
             </IconTabFilter>
-
             <IconTabFilter id="communicationTab" text="Communication">
               <content>
                 <form:SimpleForm id="communicationForm"
@@ -215,7 +212,6 @@
                 </form:SimpleForm>
               </content>
             </IconTabFilter>
-
             <IconTabFilter id="partnersTab" text="Partners">
               <content>
                 <Table id="partnersTable" items="{poPartners>/partners}" width="100%">
@@ -239,7 +235,6 @@
                 </Table>
               </content>
             </IconTabFilter>
-
             <IconTabFilter id="additionalDataTab" text="Additional Data">
               <content>
                 <form:SimpleForm id="additionalDataForm"
@@ -266,7 +261,6 @@
                 </form:SimpleForm>
               </content>
             </IconTabFilter>
-
             <IconTabFilter id="orgDataTab" text="Org. Data">
               <content>
                 <form:SimpleForm id="orgDataForm"
@@ -293,7 +287,6 @@
                 </form:SimpleForm>
               </content>
             </IconTabFilter>
-
             <IconTabFilter id="statusTab" text="Status">
               <content>
                 <Table id="statusTable" items="{poStatus>/statuses}" width="100%">
@@ -317,7 +310,6 @@
                 </Table>
               </content>
             </IconTabFilter>
-
             <IconTabFilter id="releaseStrategyTab" text="Release strategy">
               <content>
                 <Table id="releaseStrategyTable" items="{poReleaseStrategy>/strategies}" width="100%">

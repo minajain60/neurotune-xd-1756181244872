@@ -1,0 +1,12 @@
+{
+  "partners": [
+    {
+      "partnerFunction": "Vendor",
+      "partnerName": "SP-Services"
+    },
+    {
+      "partnerFunction": "Requester",
+      "partnerName": "John Doe"
+    }
+  ]
+}

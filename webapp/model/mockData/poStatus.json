@@ -1,0 +1,12 @@
+{
+  "statuses": [
+    {
+      "statusCode": "OPEN",
+      "statusDescription": "Purchase order is open."
+    },
+    {
+      "statusCode": "APPROVED",
+      "statusDescription": "Purchase order is approved."
+    }
+  ]
+}

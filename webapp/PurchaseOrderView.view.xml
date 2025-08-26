@@ -131,14 +131,216 @@
                 </form:SimpleForm>
               </content>
             </IconTabFilter>
-            <IconTabFilter id="textsTab" text="Texts"/>
-            <IconTabFilter id="addressTab" text="Address"/>
-            <IconTabFilter id="communicationTab" text="Communication"/>
-            <IconTabFilter id="partnersTab" text="Partners"/>
-            <IconTabFilter id="additionalDataTab" text="Additional Data"/>
-            <IconTabFilter id="orgDataTab" text="Org. Data"/>
-            <IconTabFilter id="statusTab" text="Status"/>
-            <IconTabFilter id="releaseStrategyTab" text="Release strategy"/>
+
+            <IconTabFilter id="textsTab" text="Texts">
+              <content>
+                <Table id="textsTable" items="{poTexts>/texts}" width="100%">
+                  <headerToolbar>
+                    <Toolbar>
+                      <Title text="Texts"/>
+                    </Toolbar>
+                  </headerToolbar>
+                  <columns>
+                    <Column><Text text="Text Type"/></Column>
+                    <Column><Text text="Text Content"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{poTexts>textType}"/>
+                        <Text text="{poTexts>textContent}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </content>
+            </IconTabFilter>
+
+            <IconTabFilter id="addressTab" text="Address">
+              <content>
+                <form:SimpleForm id="addressForm"
+                                 editable="false"
+                                 layout="ResponsiveGridLayout"
+                                 title="Address Details"
+                                 adjustLabelSpan="false"
+                                 columnsL="2"
+                                 columnsM="2"
+                                 emptySpanL="0"
+                                 emptySpanM="0"
+                                 labelSpanL="4"
+                                 labelSpanM="4">
+                  <form:content>
+                    <Label text="Name"/>
+                    <Text text="{poAddress>/name}"/>
+
+                    <Label text="Street"/>
+                    <Text text="{poAddress>/street}"/>
+
+                    <Label text="City"/>
+                    <Text text="{poAddress>/city}"/>
+
+                    <Label text="Postal Code"/>
+                    <Text text="{poAddress>/postalCode}"/>
+
+                    <Label text="Country"/>
+                    <Text text="{poAddress>/country}"/>
+                  </form:content>
+                </form:SimpleForm>
+              </content>
+            </IconTabFilter>
+
+            <IconTabFilter id="communicationTab" text="Communication">
+              <content>
+                <form:SimpleForm id="communicationForm"
+                                 editable="false"
+                                 layout="ResponsiveGridLayout"
+                                 title="Communication Details"
+                                 adjustLabelSpan="false"
+                                 columnsL="2"
+                                 columnsM="2"
+                                 emptySpanL="0"
+                                 emptySpanM="0"
+                                 labelSpanL="4"
+                                 labelSpanM="4">
+                  <form:content>
+                    <Label text="Telephone"/>
+                    <Text text="{poCommunication>/telephone}"/>
+
+                    <Label text="Fax"/>
+                    <Text text="{poCommunication>/fax}"/>
+
+                    <Label text="Email"/>
+                    <Text text="{poCommunication>/email}"/>
+                  </form:content>
+                </form:SimpleForm>
+              </content>
+            </IconTabFilter>
+
+            <IconTabFilter id="partnersTab" text="Partners">
+              <content>
+                <Table id="partnersTable" items="{poPartners>/partners}" width="100%">
+                  <headerToolbar>
+                    <Toolbar>
+                      <Title text="Partners"/>
+                    </Toolbar>
+                  </headerToolbar>
+                  <columns>
+                    <Column><Text text="Partner Function"/></Column>
+                    <Column><Text text="Partner Name"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{poPartners>partnerFunction}"/>
+                        <Text text="{poPartners>partnerName}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </content>
+            </IconTabFilter>
+
+            <IconTabFilter id="additionalDataTab" text="Additional Data">
+              <content>
+                <form:SimpleForm id="additionalDataForm"
+                                 editable="false"
+                                 layout="ResponsiveGridLayout"
+                                 title="Additional Data"
+                                 adjustLabelSpan="false"
+                                 columnsL="2"
+                                 columnsM="2"
+                                 emptySpanL="0"
+                                 emptySpanM="0"
+                                 labelSpanL="4"
+                                 labelSpanM="4">
+                  <form:content>
+                    <Label text="Sales Organization"/>
+                    <Text text="{poAdditionalData>/salesOrganization}"/>
+
+                    <Label text="Distribution Channel"/>
+                    <Text text="{poAdditionalData>/distributionChannel}"/>
+
+                    <Label text="Division"/>
+                    <Text text="{poAdditionalData>/division}"/>
+                  </form:content>
+                </form:SimpleForm>
+              </content>
+            </IconTabFilter>
+
+            <IconTabFilter id="orgDataTab" text="Org. Data">
+              <content>
+                <form:SimpleForm id="orgDataForm"
+                                 editable="false"
+                                 layout="ResponsiveGridLayout"
+                                 title="Organizational Data"
+                                 adjustLabelSpan="false"
+                                 columnsL="2"
+                                 columnsM="2"
+                                 emptySpanL="0"
+                                 emptySpanM="0"
+                                 labelSpanL="4"
+                                 labelSpanM="4">
+                  <form:content>
+                    <Label text="Company Code"/>
+                    <Text text="{poOrgData>/companyCode}"/>
+
+                    <Label text="Purchasing Organization"/>
+                    <Text text="{poOrgData>/purchasingOrganization}"/>
+
+                    <Label text="Purchasing Group"/>
+                    <Text text="{poOrgData>/purchasingGroup}"/>
+                  </form:content>
+                </form:SimpleForm>
+              </content>
+            </IconTabFilter>
+
+            <IconTabFilter id="statusTab" text="Status">
+              <content>
+                <Table id="statusTable" items="{poStatus>/statuses}" width="100%">
+                  <headerToolbar>
+                    <Toolbar>
+                      <Title text="Status Overview"/>
+                    </Toolbar>
+                  </headerToolbar>
+                  <columns>
+                    <Column><Text text="Status Code"/></Column>
+                    <Column><Text text="Status Description"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{poStatus>statusCode}"/>
+                        <Text text="{poStatus>statusDescription}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </content>
+            </IconTabFilter>
+
+            <IconTabFilter id="releaseStrategyTab" text="Release strategy">
+              <content>
+                <Table id="releaseStrategyTable" items="{poReleaseStrategy>/strategies}" width="100%">
+                  <headerToolbar>
+                    <Toolbar>
+                      <Title text="Release Strategy"/>
+                    </Toolbar>
+                  </headerToolbar>
+                  <columns>
+                    <Column><Text text="Release Code"/></Column>
+                    <Column><Text text="Release Group"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{poReleaseStrategy>releaseCode}"/>
+                        <Text text="{poReleaseStrategy>releaseGroup}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </content>
+            </IconTabFilter>
           </items>
         </IconTabBar>
 
@@ -178,9 +380,9 @@
             </ColumnListItem>
           </items>
         </Table>
-                <HBox justifyContent="End">
-            <Button text="Default Values" type="Emphasized" press="onPressDefaultValues"/>
-            <Button text="Addl Planning" type="Emphasized" press="onPressAddlPlanning"/>
+        <HBox justifyContent="End">
+          <Button text="Default Values" type="Emphasized" press="onPressDefaultValues"/>
+          <Button text="Addl Planning" type="Emphasized" press="onPressAddlPlanning"/>
         </HBox>
         <!-- Item Details Section -->
         <layout:VerticalLayout>
