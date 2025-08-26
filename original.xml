@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebDynpro xmlns="http://www.sap.com/wd/webdynpro">
+  <View name="PurchaseOrderView">
+    <Title>Main Repair/RC/RT PO</Title>
+    <MatrixLayout id="mainLayout" cellPadding="5px" width="100%">
+      <!-- Top Global Header Bar -->
+      <MatrixHeadData rowSpan="1" colSpan="2" />
+      <FlowLayout id="globalHeaderFlowLayout" hAlign="Left" vAlign="Middle" width="100%">
+        <TextView id="documentOverviewText" text="Document Overview On" design="TextViewDesign.Standard" />
+        <Button id="iconPrint" icon="sap-icon://print" design="Transparent" tooltip="Print" />
+        <Button id="iconMagnifyingGlass" icon="sap-icon://search" design="Transparent" tooltip="Search" />
+        <Button id="iconCalculator" icon="sap-icon://calculator" design="Transparent" tooltip="Calculator" />
+        <Button id="iconSettings" icon="sap-icon://action-settings" design="Transparent" tooltip="Settings" />
+        <Button id="iconAlert" icon="sap-icon://message-error" design="Transparent" tooltip="Alerts" />
+        <Button id="printPreviewButton" text="Print Preview" eventHandler="onPressPrintPreview" />
+        <Button id="messagesButton" text="Messages" eventHandler="onPressMessages" />
+        <Button id="personalSettingButton" text="Personal Setting" eventHandler="onPressPersonalSetting" />
+        <Button id="saveAsTemplateButton" text="Save As Template" eventHandler="onPressSaveAsTemplate" />
+        <Button id="loadFromTemplateButton" text="Load from Template" eventHandler="onPressLoadFromTemplate" />
+      </FlowLayout>
+
+      <!-- Main PO Header Details -->
+      <MatrixHeadData rowSpan="1" colSpan="2" />
+      <MatrixLayout id="poHeaderLayout" columns="8" width="100%" cellPadding="2px">
+        <MatrixData rowIndex="0" colIndex="0" />
+        <TextView id="poTypeText" text="Main Repair/RC/RT PO" design="TextViewDesign.Standard" />
+        <MatrixData rowIndex="0" colIndex="1" />
+        <InputField id="poNumberField" value="510009405" readOnly="true" width="10em" />
+        <MatrixData rowIndex="0" colIndex="2" />
+        <TextView id="vendorLabel" text="Vendor" design="TextViewDesign.Standard" />
+        <MatrixData rowIndex="0" colIndex="3" />
+        <InputField id="vendorField" value="" readOnly="true" width="15em" />
+        <MatrixData rowIndex="0" colIndex="4" />
+        <TextView id="docDateLabel" text="Doc. date" design="TextViewDesign.Standard" />
+        <MatrixData rowIndex="0" colIndex="5" />
+        <DateField id="docDateField" value="11.02.2016" displayFormat="DD.MM.YYYY" width="8em" readOnly="true" />
+        <MatrixData rowIndex="0" colIndex="6" />
+        <Image id="docDateWarningIcon" src="sap-icon://alert" tooltip="Warning" />
+      </MatrixLayout>
+
+      <!-- Main Tab Strip for PO Details -->
+      <MatrixHeadData rowSpan="1" colSpan="2" />
+      <TabStrip id="mainTabStrip" selectedTabKey="deliveryInvoiceTab" selectionChange="onSelectMainTab" width="100%">
+        <Tab id="deliveryInvoiceTab" text="Delivery/Invoice">
+          <FormContainer id="deliveryInvoiceForm" layout="TwoColumn" width="100%">
+            <!-- Left Column -->
+            <FormElement id="paymentTermsElement">
+              <Label id="paymentTermsLabel" text="Payment Terms" labelFor="paymentTermsField" />
+              <InputField id="paymentTermsField" value="0001" width="5em" onChange="onEditPaymentTerms" />
+            </FormElement>
+            <FormElement id="paymentInDaysElement">
+              <Label id="paymentInDaysLabel" text="Payment in" labelFor="paymentInDaysField1" />
+              <FlowLayout>
+                <InputField id="paymentInDaysField1" value="" width="5em" onChange="onEditPaymentInDays1" />
+                <TextView id="daysText1" text="days" />
+                <InputField id="paymentInPercentField" value="" width="5em" onChange="onEditPaymentInPercent" />
+                <TextView id="percentText" text="%" />
+              </FlowLayout>
+            </FormElement>
+            <FormElement id="paymentInDaysElement2">
+              <Label id="paymentInDaysLabel2" text="Payment in" labelFor="paymentInDaysField2" />
+              <FlowLayout>
+                <InputField id="paymentInDaysField2" value="" width="5em" onChange="onEditPaymentInDays2" />
+                <TextView id="daysText2" text="days" />
+              </FlowLayout>
+            </FormElement>
+            <FormElement id="paymentInDaysNetElement">
+              <Label id="paymentInDaysNetLabel" text="Payment in" labelFor="paymentInDaysNetField" />
+              <FlowLayout>
+                <InputField id="paymentInDaysNetField" value="" width="5em" onChange="onEditPaymentInDaysNet" />
+                <TextView id="daysNetText" text="days net" />
+              </FlowLayout>
+            </FormElement>
+            <FormElement id="incotermsElement">
+              <Label id="incotermsLabel" text="Incoterms" labelFor="incotermsFOBField" />
+              <FlowLayout>
+                <InputField id="incotermsFOBField" value="FOB" width="5em" onChange="onEditIncotermsFOB" />
+                <InputField id="incotermsFromPlantField" value="From Plant" width="15em" onChange="onEditIncotermsFromPlant" />
+              </FlowLayout>
+            </FormElement>
+            <FormElement id="grMessageElement">
+              <Label id="grMessageDummyLabel" text="" />
+              <CheckBox id="grMessageCheckBox" text="GR Message" selected="false" toggle="onToggleGRMessage" />
+            </FormElement>
+
+            <!-- Right Column -->
+            <FormElement id="currencyElement">
+              <Label id="currencyLabel" text="Currency" labelFor="currencyField" />
+              <InputField id="currencyField" value="INR" readOnly="true" width="5em" />
+            </FormElement>
+            <FormElement id="exchangeRateElement">
+              <Label id="exchangeRateLabel" text="Exchange Rate" labelFor="exchangeRateField" />
+              <InputField id="exchangeRateField" value="1.00000" width="10em" onChange="onEditExchangeRate" />
+            </FormElement>
+            <FormElement id="exchRateFixedElement">
+              <Label id="exchRateFixedDummyLabel" text="" />
+              <CheckBox id="exchRateFixedCheckBox" text="Exch.Rate Fixed" selected="false" toggle="onToggleExchangeRateFixed" />
+            </FormElement>
+          </FormContainer>
+        </Tab>
+        <Tab id="conditionsTab" text="Conditions" />
+        <Tab id="textsTab" text="Texts" />
+        <Tab id="addressTab" text="Address" />
+        <Tab id="communicationTab" text="Communication" />
+        <Tab id="partnersTab" text="Partners" />
+        <Tab id="additionalDataTab" text="Additional Data" />
+        <Tab id="orgDataTab" text="Org. Data" />
+        <Tab id="statusTab" text="Status" />
+        <Tab id="releaseStrategyTab" text="Release strategy" />
+      </TabStrip>
+
+      <!-- Item Details Table -->
+      <MatrixHeadData rowSpan="1" colSpan="2" />
+      <Table id="itemDetailsTable" dataSource="{/itemDetails}" visibleRowCount="8" width="100%">
+        <Columns>
+          <Column id="colS" width="2em" hAlign="Left">
+            <TextView id="headerS" text="S.." />
+          </Column>
+          <Column id="colItm" width="3em" hAlign="Right">
+            <TextView id="headerItm" text="Itm" />
+          </Column>
+          <Column id="colA" width="2em" hAlign="Center">
+            <TextView id="headerA" text="A" />
+          </Column>
+          <Column id="colI" width="2em" hAlign="Center">
+            <TextView id="headerI" text="I" />
+          </Column>
+          <Column id="colMaterial" width="10em" hAlign="Left">
+            <TextView id="headerMaterial" text="Material" />
+          </Column>
+          <Column id="colShortText" width="20em" hAlign="Left">
+            <TextView id="headerShortText" text="Short Text" />
+          </Column>
+          <Column id="colPOQuantity" width="8em" hAlign="Right">
+            <TextView id="headerPOQuantity" text="PO Quantity" />
+          </Column>
+          <Column id="colO" width="2em" hAlign="Center">
+            <TextView id="headerO" text="O..." />
+          </Column>
+          <Column id="colC" width="2em" hAlign="Center">
+            <TextView id="headerC" text="C" />
+          </Column>
+          <Column id="colDelivDate" width="8em" hAlign="Right">
+            <TextView id="headerDelivDate" text="Deliv. Date" />
+          </Column>
+          <Column id="colNetPrice" width="10em" hAlign="Right">
+            <TextView id="headerNetPrice" text="Net Price" />
+          </Column>
+          <Column id="colCurr" width="4em" hAlign="Center">
+            <TextView id="headerCurr" text="Curr..." />
+          </Column>
+          <Column id="colPer" width="3em" hAlign="Right">
+            <TextView id="headerPer" text="Per" />
+          </Column>
+          <Column id="colO2" width="2em" hAlign="Center">
+            <TextView id="headerO2" text="O..." />
+          </Column>
+          <Column id="colMatlGroup" width="8em" hAlign="Left">
+            <TextView id="headerMatlGroup" text="Matl Group" />
+          </Column>
+          <Column id="colPlnt" width="6em" hAlign="Left">
+            <TextView id="headerPlnt" text="Plnt" />
+          </Column>
+          <Column id="colStorLocation" width="8em" hAlign="Left">
+            <TextView id="headerStorLocation" text="Stor. Location" />
+          </Column>
+          <Column id="colB" width="2em" hAlign="Center">
+            <TextView id="headerB" text="B" />
+          </Column>
+        </Columns>
+        <TableControls>
+          <FlowLayout hAlign="Left" vAlign="Middle" width="100%">
+            <Button id="addRowButton" icon="sap-icon://add" design="Transparent" tooltip="Add Row" eventHandler="onAddItem" />
+            <Button id="deleteRowButton" icon="sap-icon://delete" design="Transparent" tooltip="Delete Row" eventHandler="onDeleteItem" />
+            <Button id="copyRowButton" icon="sap-icon://copy" design="Transparent" tooltip="Copy Row" eventHandler="onCopyItem" />
+            <Button id="lockItemButton" icon="sap-icon://locked" design="Transparent" tooltip="Lock Item" eventHandler="onLockItem" />
+            <Button id="unlockItemButton" icon="sap-icon://unlocked" design="Transparent" tooltip="Unlock Item" eventHandler="onUnlockItem" />
+            <Button id="displayItemButton" icon="sap-icon://display" design="Transparent" tooltip="Display Item" eventHandler="onDisplayItem" />
+            <Button id="attachmentButton" icon="sap-icon://attachment" design="Transparent" tooltip="Attachments" eventHandler="onAttachment" />
+            <Button id="noteButton" icon="sap-icon://notes" design="Transparent" tooltip="Notes" eventHandler="onNote" />
+            <Button id="filterButton" icon="sap-icon://filter" design="Transparent" tooltip="Filter" eventHandler="onFilter" />
+            <Button id="settingsButton" icon="sap-icon://action-settings" design="Transparent" tooltip="Table Settings" eventHandler="onTableSettings" />
+            <Button id="exportButton" icon="sap-icon://excel-attachment" design="Transparent" tooltip="Export to Excel" eventHandler="onExport" />
+          </FlowLayout>
+        </TableControls>
+        <Rows>
+          <Row>
+            <Image src="sap-icon://alert" tooltip="Item Status" />
+            <TextView text="1" />
+            <TextView text="F" />
+            <TextView text="D" />
+            <TextView text="" />
+            <InputField value="EXTERNAL WORK---HUB GREASING" readOnly="true" />
+            <TextView text="1 AU" />
+            <TextView text="" />
+            <TextView text="D" />
+            <TextView text="12.02.2016" />
+            <TextView text="1,100.00 INR" />
+            <TextView text="INR" />
+            <TextView text="1" />
+            <TextView text="AU" />
+            <TextView text="SP-Services" />
+            <TextView text="" />
+            <TextView text="Main SLoc" />
+            <TextView text="" />
+          </Row>
+          <Row>
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <InputField value="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="INR" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+          </Row>
+          <Row>
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <InputField value="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="INR" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+          </Row>
+          <Row>
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <InputField value="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="INR" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+          </Row>
+          <Row>
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <InputField value="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="INR" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+          </Row>
+          <Row>
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <InputField value="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="INR" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+            <TextView text="" />
+          </Row>
+        </Rows>
+      </Table>
+      <FlowLayout id="tableActionButtonsFlow" hAlign="Right" vAlign="Middle" width="100%">
+        <Button id="defaultValuesButton" text="Default Values" design="Emphasized" eventHandler="onPressDefaultValues" />
+        <Button id="addlPlanningButton" text="Addl Planning" design="Emphasized" eventHandler="onPressAddlPlanning" />
+      </FlowLayout>
+
+      <!-- Item Level Details and Tabs -->
+      <MatrixHeadData rowSpan="1" colSpan="2" />
+      <FlowLayout id="itemHeaderFlowLayout" hAlign="Left" vAlign="Middle" width="100%">
+        <TextView id="itemLabel" text="Item" design="TextViewDesign.Bold" />
+        <DropDownByIndex id="itemDropdown" selectedKey="1" selectionChange="onSelectItem" width="30em">
+          <ListItem text="[ 1 ] EXTERNAL WORK---HUB GREASING" key="1" />
+        </DropDownByIndex>
+        <Button id="previousItemButton" icon="sap-icon://slim-arrow-up" design="Transparent" tooltip="Previous Item" eventHandler="onPressPreviousItem" />
+        <Button id="nextItemButton" icon="sap-icon://slim-arrow-down" design="Transparent" tooltip="Next Item" eventHandler="onPressNextItem" />
+        <FlowLayout hAlign="Right"> <!-- Nested FlowLayout for right-aligned buttons -->
+          <Button id="itemCopyButton" icon="sap-icon://copy" design="Transparent" tooltip="Copy Item" eventHandler="onCopyItemDetails" />
+          <Button id="itemDeleteButton" icon="sap-icon://delete" design="Transparent" tooltip="Delete Item" eventHandler="onDeleteItemDetails" />
+        </FlowLayout>
+      </FlowLayout>
+
+      <MatrixHeadData rowSpan="1" colSpan="2" />
+      <TabStrip id="itemDetailsTabStrip" selectedTabKey="indiaTab" selectionChange="onSelectItemTab" width="100%">
+        <Tab id="servicesTab" text="Services" />
+        <Tab id="limitsTab" text="Limits" />
+        <Tab id="materialDataTab" text="Material Data" />
+        <Tab id="quantitiesWeightsTab" text="Quantities/Weights" />
+        <Tab id="deliveryScheduleTab" text="Delivery Schedule" />
+        <Tab id="deliveryTab" text="Delivery" />
+        <Tab id="invoiceTab" text="Invoice" />
+        <Tab id="conditionsItemTab" text="Conditions" />
+        <Tab id="indiaTab" text="India">
+          <FormContainer id="indiaTabForm" layout="OneColumn" width="100%">
+            <FormElement id="controlCodeElement">
+              <Label id="controlCodeLabel" text="Control code" labelFor="controlCodeField" />
+              <FlowLayout>
+                <InputField id="controlCodeField" value="" width="10em" valueState="Warning" onChange="onEditControlCode" />
+                <Button id="controlCodeF4Button" icon="sap-icon://value-help" design="Transparent" tooltip="Value Help" eventHandler="onPressF4ControlCode" />
+              </FlowLayout>
+            </FormElement>
+          </FormContainer>
+        </Tab>
+        <Tab id="accountAssignmentTab" text="Account Assignment" />
+        <Tab id="purchaseOrdHistoryTab" text="Purchase Ord..." />
+      </TabStrip>
+    </MatrixLayout>
+  </View>
+
+  <Controller name="PurchaseOrderViewController">
+    <Methods>
+      <!-- Global Header Actions -->
+      <Method name="onPressPrintPreview">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onPressMessages">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onPressPersonalSetting">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onPressSaveAsTemplate">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onPressLoadFromTemplate">
+        <Parameters />
+        <Code />
+      </Method>
+
+      <!-- Main Tab Strip Actions -->
+      <Method name="onSelectMainTab">
+        <Parameters>
+          <Parameter name="event" type="com.sap.tc.webdynpro.clientserver.phases.api.WDPhaseEvent" />
+        </Parameters>
+        <Code />
+      </Method>
+
+      <!-- Delivery/Invoice Tab Field Actions (can be onValueHelp or onChange if editable) -->
+      <Method name="onEditPaymentTerms">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onEditPaymentInDays1">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onEditPaymentInPercent">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onEditPaymentInDays2">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onEditPaymentInDaysNet">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onEditIncotermsFOB">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onEditIncotermsFromPlant">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onToggleGRMessage">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onEditExchangeRate">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onToggleExchangeRateFixed">
+        <Parameters />
+        <Code />
+      </Method>
+
+      <!-- Item Table Actions -->
+      <Method name="onAddItem">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onDeleteItem">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onCopyItem">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onLockItem">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onUnlockItem">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onDisplayItem">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onAttachment">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onNote">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onFilter">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onTableSettings">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onExport">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onPressDefaultValues">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onPressAddlPlanning">
+        <Parameters />
+        <Code />
+      </Method>
+
+      <!-- Item Level Actions -->
+      <Method name="onSelectItem">
+        <Parameters>
+          <Parameter name="event" type="com.sap.tc.webdynpro.clientserver.phases.api.WDPhaseEvent" />
+        </Parameters>
+        <Code />
+      </Method>
+      <Method name="onPressPreviousItem">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onPressNextItem">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onCopyItemDetails">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onDeleteItemDetails">
+        <Parameters />
+        <Code />
+      </Method>
+
+      <!-- Item Level Tab Strip Actions -->
+      <Method name="onSelectItemTab">
+        <Parameters>
+          <Parameter name="event" type="com.sap.tc.webdynpro.clientserver.phases.api.WDPhaseEvent" />
+        </Parameters>
+        <Code />
+      </Method>
+
+      <!-- India Tab Actions -->
+      <Method name="onPressF4ControlCode">
+        <Parameters />
+        <Code />
+      </Method>
+      <Method name="onEditControlCode">
+        <Parameters />
+        <Code />
+      </Method>
+    </Methods>
+  </Controller>
+</WebDynpro>

@@ -1,0 +1,238 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:layout="sap.ui.layout"
+          xmlns:form="sap.ui.layout.form"
+          xmlns:core="sap.ui.core"
+          controllerName="converted.purchaseorderview.controller.PurchaseOrderView"
+          displayBlock="true"
+          xmlns:commons="sap.ui.commons">
+  <Page title="Purchase Order View" showHeader="true">
+    <customHeader>
+      <OverflowToolbar>
+        <content>
+          <!-- Global Header Buttons -->
+          <Text text="Document Overview On"/>
+          <Button icon="sap-icon://print" type="Transparent" tooltip="Print" press="onPressPrintPreview"/>
+          <Button icon="sap-icon://search" type="Transparent" tooltip="Search" press="onPressMessages"/>
+          <Button icon="sap-icon://calculator" type="Transparent" tooltip="Calculator"/>
+          <Button icon="sap-icon://action-settings" type="Transparent" tooltip="Settings"/>
+          <Button icon="sap-icon://message-error" type="Transparent" tooltip="Alerts"/>
+          <ToolbarSeparator/>
+          <Button text="Print Preview" press="onPressPrintPreview"/>
+          <Button text="Messages" press="onPressMessages"/>
+          <Button text="Personal Setting" press="onPersonalSetting"/>
+          <Button text="Save as Template" press="onPressSaveAsTemplate"/>
+          <Button text="Load from Template" press="onLoadFromTemplate"/>
+        </content>
+      </OverflowToolbar>
+    </customHeader>
+    <content>
+      <layout:VerticalLayout width="100%">
+        <!-- PO Header Details -->
+        <form:SimpleForm id="poHeaderForm"
+                         editable="false"
+                         layout="ResponsiveGridLayout"
+                         title="Purchase Order Header"
+                         adjustLabelSpan="false"
+                         columnsL="3"
+                         columnsM="3"
+                         emptySpanL="0"
+                         emptySpanM="0"
+                         labelSpanL="4"
+                         labelSpanM="4">
+          <form:content>
+            <Label text="Purchase Order Number"/>
+            <Text text="{poHeader>/poNumber}"/>
+
+            <Label text="Vendor"/>
+            <Text text="{poHeader>/vendor}"/>
+
+            <Label text="Document Date"/>
+            <Text text="{poHeader>/documentDate}"/>
+
+            <Label text="Payment Terms"/>
+            <Text text="{poHeader>/paymentTerms}"/>
+
+            <Label text="Currency"/>
+            <Text text="{poHeader>/currency}"/>
+
+            <Label text="Exchange Rate"/>
+            <Text text="{poHeader>/exchangeRate}"/>
+
+            <Label text="Incoterms"/>
+            <Text text="{poHeader>/incoterms}"/>
+
+            <Label text="GR Message"/>
+            <CheckBox selected="{poHeader>/grMessage}"/>
+          </form:content>
+        </form:SimpleForm>
+
+        <!-- Main Tab Strip -->
+        <IconTabBar id="mainTabStrip"
+                    expandable="false"
+                    select="onSelectMainTab"
+                    class="sapUiResponsiveContentPadding">
+          <items>
+            <IconTabFilter id="deliveryInvoiceTab" text="Delivery/Invoice">
+              <content>
+                <form:SimpleForm id="deliveryInvoiceForm"
+                                 editable="true"
+                                 layout="ResponsiveGridLayout"
+                                 title="Delivery/Invoice Details"
+                                 adjustLabelSpan="false"
+                                 columnsL="2"
+                                 columnsM="2"
+                                 emptySpanL="0"
+                                 emptySpanM="0"
+                                 labelSpanL="4"
+                                 labelSpanM="4">
+                  <form:content>
+                    <Label text="Payment Terms"/>
+                    <Input value="{poHeader>/paymentTerms}"/>
+
+                    <Label text="Payment in Days"/>
+                    <HBox>
+                      <Input width="5em"/>
+                      <Text text="days"/>
+                      <Input width="5em"/>
+                      <Text text="%"/>
+                    </HBox>
+
+                    <Label text="Payment in Days (2)"/>
+                    <HBox>
+                      <Input width="5em"/>
+                      <Text text="days"/>
+                    </HBox>
+
+                    <Label text="Payment in Days Net"/>
+                    <HBox>
+                      <Input width="5em"/>
+                      <Text text="days net"/>
+                    </HBox>
+
+                    <Label text="Incoterms"/>
+                    <HBox>
+                      <Input width="5em" value="FOB"/>
+                      <Input width="15em" value="From Plant"/>
+                    </HBox>
+
+                    <Label text="GR Message"/>
+                    <CheckBox selected="{poHeader>/grMessage}" text="GR Message"/>
+
+                    <Label text="Currency"/>
+                    <Input value="{poHeader>/currency}" editable="false"/>
+
+                    <Label text="Exchange Rate"/>
+                    <Input value="{poHeader>/exchangeRate}"/>
+
+                    <Label text="Exch. Rate Fixed"/>
+                    <CheckBox selected="{/exchRateFixed}" text="Exch.Rate Fixed"/>
+                  </form:content>
+                </form:SimpleForm>
+              </content>
+            </IconTabFilter>
+            <IconTabFilter id="textsTab" text="Texts"/>
+            <IconTabFilter id="addressTab" text="Address"/>
+            <IconTabFilter id="communicationTab" text="Communication"/>
+            <IconTabFilter id="partnersTab" text="Partners"/>
+            <IconTabFilter id="additionalDataTab" text="Additional Data"/>
+            <IconTabFilter id="orgDataTab" text="Org. Data"/>
+            <IconTabFilter id="statusTab" text="Status"/>
+            <IconTabFilter id="releaseStrategyTab" text="Release strategy"/>
+          </items>
+        </IconTabBar>
+
+        <!-- Line Item Table -->
+        <Table id="poItemsTable" items="{poItems>/items}" width="100%" growing="true" growingThreshold="20">
+          <headerToolbar>
+            <Toolbar>
+              <Title text="Purchase Order Items"/>
+            </Toolbar>
+          </headerToolbar>
+          <columns>
+            <Column width="4em"><Text text="Item"/></Column>
+            <Column width="8em"><Text text="Material"/></Column>
+            <Column width="15em"><Text text="Short Text"/></Column>
+            <Column width="6em"><Text text="PO Quantity"/></Column>
+            <Column width="8em"><Text text="Delivery Date"/></Column>
+            <Column width="6em"><Text text="Net Price"/></Column>
+            <Column width="4em"><Text text="Currency"/></Column>
+            <Column width="6em"><Text text="Material Group"/></Column>
+            <Column width="6em"><Text text="Plant"/></Column>
+            <Column width="6em"><Text text="Storage Location"/></Column>
+          </columns>
+          <items>
+            <ColumnListItem>
+              <cells>
+                <Text text="{poItems>item}"/>
+                <Text text="{poItems>material}"/>
+                <Text text="{poItems>shortText}"/>
+                <Text text="{poItems>poQuantity}"/>
+                <Text text="{poItems>deliveryDate}"/>
+                <Text text="{poItems>netPrice}"/>
+                <Text text="{poItems>currency}"/>
+                <Text text="{poItems>materialGroup}"/>
+                <Text text="{poItems>plant}"/>
+                <Text text="{poItems>storageLocation}"/>
+              </cells>
+            </ColumnListItem>
+          </items>
+        </Table>
+                <HBox justifyContent="End">
+            <Button text="Default Values" type="Emphasized" press="onPressDefaultValues"/>
+            <Button text="Addl Planning" type="Emphasized" press="onPressAddlPlanning"/>
+        </HBox>
+        <!-- Item Details Section -->
+        <layout:VerticalLayout>
+          <HBox>
+            <Label text="Item:" design="Bold"/>
+            <Select width="30em">
+              <core:Item text="[ 1 ] EXTERNAL WORK---HUB GREASING" key="1"/>
+            </Select>
+            <Button icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="Previous Item"/>
+            <Button icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="Next Item"/>
+          </HBox>
+
+          <!-- Item Details Tab Strip -->
+          <IconTabBar id="itemDetailsTabStrip"
+                      expandable="false"
+                      select="onSelectItemTab"
+                      class="sapUiResponsiveContentPadding">
+            <items>
+              <IconTabFilter id="servicesTab" text="Services"/>
+              <IconTabFilter id="limitsTab" text="Limits"/>
+              <IconTabFilter id="materialDataTab" text="Material Data"/>
+              <IconTabFilter id="quantitiesWeightsTab" text="Quantities/Weights"/>
+              <IconTabFilter id="deliveryScheduleTab" text="Delivery Schedule"/>
+              <IconTabFilter id="deliveryTab" text="Delivery"/>
+              <IconTabFilter id="invoiceTab" text="Invoice"/>
+              <IconTabFilter id="conditionsItemTab" text="Conditions"/>
+              <IconTabFilter id="indiaTab" text="India">
+                <content>
+                  <form:SimpleForm id="indiaTabForm"
+                                   editable="false"
+                                   layout="ResponsiveGridLayout"
+                                   title="India Details"
+                                   adjustLabelSpan="false"
+                                   columnsL="1"
+                                   columnsM="1"
+                                   emptySpanL="0"
+                                   emptySpanM="0"
+                                   labelSpanL="3"
+                                   labelSpanM="3">
+                    <form:content>
+                      <Label text="Control Code"/>
+                      <Input value="" valueState="Warning" width="10em"/>
+                    </form:content>
+                  </form:SimpleForm>
+                </content>
+              </IconTabFilter>
+              <IconTabFilter id="accountAssignmentTab" text="Account Assignment"/>
+              <IconTabFilter id="purchaseOrdHistoryTab" text="Purchase Ord. History"/>
+            </items>
+          </IconTabBar>
+        </layout:VerticalLayout>
+      </layout:VerticalLayout>
+    </content>
+  </Page>
+</mvc:View>

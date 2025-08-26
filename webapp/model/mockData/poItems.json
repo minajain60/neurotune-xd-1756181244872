@@ -1,0 +1,124 @@
+{
+  "items": [
+    {
+      "item": "1",
+      "material": "MAT123",
+      "shortText": "EXTERNAL WORK---HUB GREASING",
+      "poQuantity": "1 AU",
+      "deliveryDate": "12.02.2016",
+      "netPrice": "1,100.00",
+      "currency": "INR",
+      "materialGroup": "SP-Services",
+      "plant": "Plant 1",
+      "storageLocation": "Main SLoc"
+    },
+    {
+      "item": "2",
+      "material": "MAT456",
+      "shortText": "Another material",
+      "poQuantity": "2 EA",
+      "deliveryDate": "15.02.2016",
+      "netPrice": "500.00",
+      "currency": "USD",
+      "materialGroup": "Group 2",
+      "plant": "Plant 2",
+      "storageLocation": "SLoc 2"
+    },
+    {
+      "item": "3",
+      "material": "MAT789",
+      "shortText": "Yet another material",
+      "poQuantity": "3 KG",
+      "deliveryDate": "18.02.2016",
+      "netPrice": "750.00",
+      "currency": "EUR",
+      "materialGroup": "Group 3",
+      "plant": "Plant 3",
+      "storageLocation": "SLoc 3"
+    },
+    {
+      "item": "4",
+      "material": "MAT012",
+      "shortText": "Test material",
+      "poQuantity": "4 PC",
+      "deliveryDate": "21.02.2016",
+      "netPrice": "250.00",
+      "currency": "GBP",
+      "materialGroup": "Group 4",
+      "plant": "Plant 4",
+      "storageLocation": "SLoc 4"
+    },
+    {
+      "item": "5",
+      "material": "MAT345",
+      "shortText": "Example material",
+      "poQuantity": "5 L",
+      "deliveryDate": "24.02.2016",
+      "netPrice": "1000.00",
+      "currency": "JPY",
+      "materialGroup": "Group 5",
+      "plant": "Plant 5",
+      "storageLocation": "SLoc 5"
+    },
+    {
+      "item": "6",
+      "material": "MAT678",
+      "shortText": "Sample material",
+      "poQuantity": "6 M",
+      "deliveryDate": "27.02.2016",
+      "netPrice": "600.00",
+      "currency": "CAD",
+      "materialGroup": "Group 6",
+      "plant": "Plant 6",
+      "storageLocation": "SLoc 6"
+    },
+    {
+      "item": "7",
+      "material": "MAT901",
+      "shortText": "Demo material",
+      "poQuantity": "7 G",
+      "deliveryDate": "02.03.2016",
+      "netPrice": "800.00",
+      "currency": "AUD",
+      "materialGroup": "Group 7",
+      "plant": "Plant 7",
+      "storageLocation": "SLoc 7"
+    },
+    {
+      "item": "8",
+      "material": "MAT234",
+      "shortText": "Mock material",
+      "poQuantity": "8 ML",
+      "deliveryDate": "05.03.2016",
+      "netPrice": "900.00",
+      "currency": "CHF",
+      "materialGroup": "Group 8",
+      "plant": "Plant 8",
+      "storageLocation": "SLoc 8"
+    },
+    {
+      "item": "9",
+      "material": "MAT567",
+      "shortText": "Test example",
+      "poQuantity": "9 MG",
+      "deliveryDate": "08.03.2016",
+      "netPrice": "300.00",
+      "currency": "CNY",
+      "materialGroup": "Group 9",
+      "plant": "Plant 9",
+      "storageLocation": "SLoc 9"
+    },
+    {
+      "item": "10",
+      "material": "MAT890",
+      "shortText": "Another example",
+      "poQuantity": "10 KG",
+      "deliveryDate": "11.03.2016",
+      "netPrice": "400.00",
+      "currency": "SEK",
+      "materialGroup": "Group 10",
+      "plant": "Plant 10",
+      "storageLocation": "SLoc 10"
+    }
+  ]
+}
